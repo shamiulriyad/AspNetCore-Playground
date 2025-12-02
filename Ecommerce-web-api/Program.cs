@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -11,19 +15,19 @@ List<Category> categories = new List<Category>();
 app.MapGet("/", () => "Hello World!");
 
 // GET: All categories
-app.MapGet("/api/categories", () =>
-{
-    return categories;
-});
+app.MapGet("/api/categories", () => categories);
 
 // POST: Create a new category
-app.MapPost("/api/categories", () =>
+app.MapPost("/api/categories", (Category categoryData) =>
 {
+    if (string.IsNullOrEmpty(categoryData.Name))
+        return Results.BadRequest("Category name is required.");
+
     var category = new Category
     {
-        CategoryId = Guid.Parse("c8afa85f-0895-432b-8c78-3f9f6be36010"),
-        Name = "Electronic",
-        Description = "If you need it",
+        CategoryId = Guid.NewGuid(),
+        Name = categoryData.Name,
+        Description = categoryData.Description,
         CreatedAt = DateTime.UtcNow
     };
 
@@ -32,21 +36,40 @@ app.MapPost("/api/categories", () =>
     return Results.Created($"/api/categories/{category.CategoryId}", category);
 });
 
-
-
-
-app.MapDelete("/api/categories", () =>
+// DELETE: Delete category by id
+app.MapDelete("/api/categories/{id}", (Guid id) =>
 {
+    var foundCategory = categories.FirstOrDefault(c => c.CategoryId == id);
+    if (foundCategory == null)
+    {
+        return Results.NotFound("Category with this id not found.");
+    }
 
-    var foundcategory=categories.FirstOrDefault(category=>category. CategoryId== Guid.Parse("c8afa85f-0895-432b-8c78-3f9f6be36010"));
-     if (foundcategory is null)
-        return Results.NotFound("Category not found");
+    if (foundCategory is null)
+        return Results.NotFound("Category not found.");
 
-    categories.Remove(foundcategory);
+    categories.Remove(foundCategory);
 
     return Results.NoContent();
 });
 
+app.MapPut("/api/categories/{id}", (Guid id, Category categoryData) =>
+{
+    var foundCategory = categories.FirstOrDefault(c => c.CategoryId == id);
+
+    if (foundCategory is null)
+        return Results.NotFound("Category not found.");
+
+    if (string.IsNullOrEmpty(categoryData.Name))
+        return Results.BadRequest("Category name is required.");
+
+    // Full update (PUT replaces everything)
+    foundCategory.Name = categoryData.Name;
+    foundCategory.Description = categoryData.Description;
+    foundCategory.CreatedAt = foundCategory.CreatedAt; // Keep original created date
+
+    return Results.Ok(foundCategory);
+});
 
 app.Run();
 
@@ -55,9 +78,10 @@ public record Category
 {
     public Guid CategoryId { get; set; }
     public string? Name { get; set; }
-    public string? Description { get; set; }
+    public string? Description { get; set; }=string.Empty;
     public DateTime? CreatedAt { get; set; }
 }
+
 
 // category -> products 
 //CRUD
