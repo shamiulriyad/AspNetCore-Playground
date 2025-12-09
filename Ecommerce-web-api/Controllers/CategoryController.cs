@@ -14,15 +14,18 @@ public class CategoryController : ControllerBase
 
     [HttpGet]
     // GET:/api/categories   ;; All categories with optional search
-    public IActionResult GetCategories([FromQuery] string? searchValues)
-    {
-        if (!string.IsNullOrEmpty(searchValues))
-        {
-            var searchCategories = categories.Where(c => c.Name != null && c.Name.Contains(searchValues, StringComparison.OrdinalIgnoreCase)).ToList();
-            return Ok(searchCategories);
-        }
 
-        return Ok(categories);
+    // page and pageSize query parameters for pagination
+    public async Task<IActionResult> GetCategories([FromQuery] int pageNumber=1, 
+    [FromQuery] int pageSize=10, [FromQuery] string searchValues = "")
+
+    {
+
+        Console.WriteLine($"Page: {pageNumber}, Page Size: {pageSize}, Search: {searchValues}");
+
+      var categoryList = categories;
+
+        return Ok(categoryList);
     }
 
 
