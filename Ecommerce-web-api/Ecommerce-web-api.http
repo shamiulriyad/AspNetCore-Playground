@@ -3,4 +3,24 @@
 GET {{Ecommerce_web_api_HostAddress}}/weatherforecast/
 Accept: application/json
 
+### Get All Categories
+GET {{Ecommerce_web_api_HostAddress}}/api/categories
+Accept: application/json
+### Get Category By Id
+
+@categoryId = 00000000-0000-0000-0000-000000000000
+
+GET {{Ecommerce_web_api_HostAddress}}/api/categories/{{categoryId}}
+Accept: application/json
+### Create New Category
+POST {{Ecommerce_web_api_HostAddress}}/api/categories
+Content-Type: application/json
+
+{
+    "name": "electronics",
+    "description": "A variety of electronic devices available"
+}
+
+
+
 ###
