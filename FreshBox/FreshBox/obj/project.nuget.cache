@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "v5Wmm2Asd7Q=",
+  "success": true,
+  "projectFilePath": "D:\\asp.NET\\AspNetCore-Playground\\FreshBox\\FreshBox\\FreshBox.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.0\\microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

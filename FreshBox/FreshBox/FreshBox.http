@@ -1,0 +1,6 @@
+@FreshBox_HostAddress = http://localhost:5079
+
+GET {{FreshBox_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

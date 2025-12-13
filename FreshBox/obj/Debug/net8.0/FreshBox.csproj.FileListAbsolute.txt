@@ -1,0 +1,11 @@
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.csproj.AssemblyReference.cache
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.GeneratedMSBuildEditorConfig.editorconfig
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.AssemblyInfoInputs.cache
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.AssemblyInfo.cs
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.csproj.CoreCompileInputs.cache
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.MvcApplicationPartsAssemblyInfo.cs
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.MvcApplicationPartsAssemblyInfo.cache
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.RazorAssemblyInfo.cache
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.RazorAssemblyInfo.cs
+D:\asp.NET\AspNetCore-Playground\FreshBox\obj\Debug\net8.0\FreshBox.sourcelink.json
